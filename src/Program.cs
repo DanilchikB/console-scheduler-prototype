@@ -1,4 +1,4 @@
-﻿using System;
+﻿using HelpFunctions.colorText;
 
 namespace console_scheduler_prototype
 {
@@ -6,7 +6,9 @@ namespace console_scheduler_prototype
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ColorText.WriteGreenText("Green");
+            ColorText.WriteYellowText("Yellow");
+            ColorText.WriteRedText("Red");
         }
     }
 }
