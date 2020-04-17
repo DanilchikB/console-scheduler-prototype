@@ -5,7 +5,7 @@
 
 using System;
 
-namespace HelpFunctions.colorText
+namespace Helpers.HelpFunctions.colorText
 {
     static class ColorText{
         public static void WriteGreenText(string text){

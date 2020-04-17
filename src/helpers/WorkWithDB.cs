@@ -4,7 +4,7 @@
 
 using System.Data.SQLite;
 
-namespace DB.WorkWithDB{
+namespace Helpers.DB.WorkWithDB{
     class WorkWithDB{
         public WorkWithDB(){
             locationDB = "Data Source=./test.db; Version=3;";

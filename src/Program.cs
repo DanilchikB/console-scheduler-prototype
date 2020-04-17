@@ -1,7 +1,6 @@
 ﻿using System;
-using HelpFunctions.colorText;
-using System.Data.SQLite;
-using DB.WorkWithDB;
+using Helpers.DB.WorkWithDB;
+using Modules.DataBase;
 
 namespace console_scheduler_prototype
 {
@@ -9,12 +8,15 @@ namespace console_scheduler_prototype
     {
         static void Main(string[] args)
         {
-            
+            //Создание таблицы с записями, если она не существует
+            DataBase.CreateRecordsTable();
 
-           WorkWithDB db = new WorkWithDB();
+            //Вставка записей в тиблицу
+            string date = DateTime.Now.ToString();
+            WorkWithDB db = new WorkWithDB();
             db.ExecuteQueryNoReturn(
-                $@"INSERT INTO records (record)
-                    VALUES('VALUE');");
+                $@"INSERT INTO records (record, date)
+                    VALUES('VALUE', '{date}');");
         }
     }
 }
