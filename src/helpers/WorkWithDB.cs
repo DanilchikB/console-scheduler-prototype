@@ -29,15 +29,14 @@ namespace Helpers.DB.WorkWithDB{
 
         //Метод для открытия и закрытия базы данных
         private void OpenAndCloseDB(string sqlQuery, string locationDB, Query query){
-            using(SQLiteConnection Connection = new SQLiteConnection(locationDB)){
+            using SQLiteConnection Connection = new SQLiteConnection(locationDB);
                 
-                Connection.Open();
+            Connection.Open();
 
-                SQLiteCommand Command = new SQLiteCommand(Connection);
-                query.Invoke(Command, sqlQuery);
+            using SQLiteCommand Command = new SQLiteCommand(Connection);
+            query.Invoke(Command, sqlQuery);
 
-                Connection.Close();
-            }
+            Connection.Close();
         }
     } 
 
