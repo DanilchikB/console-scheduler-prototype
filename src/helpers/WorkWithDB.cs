@@ -2,7 +2,9 @@
     Класс для работы с sql запросами для базы данных SQLite
 ***/
 
+using System;
 using System.Data.SQLite;
+using Helpers.HelpFunctions.Text;
 
 namespace Helpers.DB.WorkWithDB{
     class WorkWithDB{
@@ -25,6 +27,24 @@ namespace Helpers.DB.WorkWithDB{
                 command.ExecuteNonQuery();
             };
             OpenAndCloseDB(sqlQuery, locationDB, query);
+        }
+
+        //Показ всех записей
+        public void ViewAllNotes(){
+            Query query = delegate(SQLiteCommand command, string sqlQuery){
+                command.CommandText = sqlQuery;
+                using SQLiteDataReader read = command.ExecuteReader();
+                while(read.Read()){
+
+                    string id = Text.LimitAndIndentation(read["id"].ToString(), 7);
+                    string record = Text.LimitAndIndentation(read["record"].ToString(),15);
+                    
+                    Console.WriteLine(id + "   " + record + "   " + read["date"]);
+                }
+                read.Close();
+            };
+            OpenAndCloseDB("SELECT * FROM records;", locationDB, query);
+            
         }
 
         //Метод для открытия и закрытия базы данных

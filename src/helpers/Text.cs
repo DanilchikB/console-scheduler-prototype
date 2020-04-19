@@ -1,13 +1,24 @@
 /***
-    Статический класс с методами для вывода цветного текста в консоли. 
+    Статический класс с методами для работы с текстом в консоли. 
     Базовые цвета: зеленый, желтый и красный
 ***/
 
 using System;
 
-namespace Helpers.HelpFunctions.colorText
+namespace Helpers.HelpFunctions.Text
 {
-    static class ColorText{
+    static class Text{
+
+        public static string LimitAndIndentation(string text, int limitLength){
+            if(text.Length > limitLength){
+                text = text.Substring(0, limitLength-3) + "...";
+            }else{
+                text = text.PadRight(limitLength);
+            }
+            return text;
+        }
+
+
         public static void WriteGreenText(string text){
             WriteColorText(text, ConsoleColor.Green);
         }

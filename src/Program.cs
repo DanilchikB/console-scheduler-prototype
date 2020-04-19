@@ -31,16 +31,7 @@ namespace console_scheduler_prototype
             Console.WriteLine("Все записи:");
             //Вывод всех записей
 
-            using SQLiteConnection Connection = new SQLiteConnection("Data Source=./test.db; Version=3;");
-            Connection.Open();
-            using SQLiteCommand Command = new SQLiteCommand(Connection);
-            Command.CommandText = "SELECT * FROM records;";
-            using SQLiteDataReader read = Command.ExecuteReader();
-            while(read.Read()){
-                Console.WriteLine(read["id"] + " " + read["record"] + " " + read["date"]);
-            }
-            read.Close();
-            Connection.Close();
+            db.ViewAllNotes();
             
             
 
