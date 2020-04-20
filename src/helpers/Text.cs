@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Helpers.HelpFunctions.Text
+namespace Helpers.HelpText
 {
     static class Text{
 

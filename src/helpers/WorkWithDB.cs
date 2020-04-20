@@ -4,15 +4,17 @@
 
 using System;
 using System.Data.SQLite;
-using Helpers.HelpFunctions.Text;
+using Helpers.HelpText;
 
-namespace Helpers.DB.WorkWithDB{
+namespace Helpers.HelpWorkWithDB{
     class WorkWithDB{
-        public WorkWithDB(){
-            locationDB = "Data Source=./test.db; Version=3;";
-        }
+
         public WorkWithDB(string locationDB){
-            this.locationDB = locationDB;
+            if(locationDB != ""){
+                this.locationDB = "Data Source="+locationDB+"; Version=3;";
+            }else{
+                this.locationDB = "Data Source=./test.db; Version=3;";
+            }
         }
 
         public string locationDB{private get; set;}

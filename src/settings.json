@@ -1,0 +1,15 @@
+{
+    "LocalDB": "test.db",
+
+    "Commands": {
+        "AddNote":{
+            "Description": "Добавление записи",
+            "Command": "addnote"
+        },
+        "ViewAll": {
+            "Description": "Вывести все записи",
+            "Command": "viewall"
+        }
+    }
+
+}

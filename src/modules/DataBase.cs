@@ -1,4 +1,5 @@
-using Helpers.DB.WorkWithDB;
+using Helpers.HelpWorkWithDB;
+using Helpers.HelpWorkSettings;
 
 namespace Modules.DataBase{
     static class DataBase{
@@ -10,8 +11,12 @@ namespace Modules.DataBase{
                 date TEXT NOT NULL
             );";
 
-            WorkWithDB db = new WorkWithDB("Data Source=./test.db; Version=3;");
+            WorkSettings ws = new WorkSettings();
+
+            WorkWithDB db = new WorkWithDB(ws.Settings.LocalDB);
             db.ExecuteQueryNoReturn(sqlQuery);
+
+            
         }
     }
 }
