@@ -9,6 +9,14 @@
         "ViewAll": {
             "Description": "Вывести все записи",
             "Command": "viewall"
+        },
+        "ViewCommand":{
+            "Description": "Вывести все команды",
+            "Command": "help"
+        },
+        "Exit": {
+            "Description": "Выход из программы",
+            "Command": "exit"
         }
     }
 

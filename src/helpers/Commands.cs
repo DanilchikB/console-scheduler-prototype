@@ -13,5 +13,17 @@ namespace Helpers.HelpCommands{
             }
             Console.WriteLine();
         }
+
+        public string takeCommand(string enterCommand){
+            WorkSettings ws = new WorkSettings();
+
+            enterCommand = enterCommand.Trim();
+            foreach(KeyValuePair<string, Dictionary<string, string>> command in ws.Settings.Commands){
+                if(enterCommand == command.Value["Command"]){
+                    return command.Key;
+                }
+            }
+            return null;
+        }
     }
 } 
