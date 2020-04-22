@@ -2,6 +2,7 @@
 using Modules.DataBase;
 using Helpers.HelpCommands;
 using Helpers.HelpText;
+using Helpers.HelpWorkSettings;
 
 
 namespace console_scheduler_prototype
@@ -11,11 +12,10 @@ namespace console_scheduler_prototype
         static void Main(string[] args)
         {
 
-            //WorkSettings s = new WorkSettings();
-            //Console.WriteLine(s.Settings.LocalDB);
-            //Console.WriteLine(s.Settings.Commands["AddNote"]["Description"]);
-            //Создание таблицы с записями, если она не существует
-            DataBase.CreateRecordsTable();
+            WorkSettings settings = new WorkSettings();
+            DataBase dataBase = new DataBase(settings);
+            
+            dataBase.CreateRecordsTable();
             Commands commands = new Commands();
             Console.WriteLine("Начало программы");
             bool workProgram = true;
@@ -27,18 +27,25 @@ namespace console_scheduler_prototype
                 while(noCorrectCommandEntry){
                     Console.Write("Введите команду: ");
                     string enteredCommand = Console.ReadLine();
-                    command = commands.takeCommand(enteredCommand);
+                    command = commands.takeCommand(enteredCommand, settings);
 
                     if(command == null){
                         Text.WriteRedText("Ошибка: Такой команды не существует!");
-                        commands.ViewAllCommands();
+                        commands.ViewAllCommands(settings);
                     }else{
                         noCorrectCommandEntry = false;
                     }
                     
                 }
                 switch(command){
+                    case "AddNote":
+                        dataBase.AddRecordToTable();
+                        break;
+                    case "ViewAll":
+                        dataBase.ViewAllNotes();
+                        break;
                     case "Exit":
+                        Console.WriteLine("Выход.");
                         workProgram = false;
                         break;
                     default:

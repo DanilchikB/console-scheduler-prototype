@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Helpers.HelpCommands{
     class Commands{
-        public void ViewAllCommands(){
-            WorkSettings ws = new WorkSettings();
+        public void ViewAllCommands(WorkSettings ws){
+            
             Console.WriteLine("Доступные команды:");
 
             foreach(KeyValuePair<string, Dictionary<string, string>> command in ws.Settings.Commands){
@@ -14,8 +14,7 @@ namespace Helpers.HelpCommands{
             Console.WriteLine();
         }
 
-        public string takeCommand(string enterCommand){
-            WorkSettings ws = new WorkSettings();
+        public string takeCommand(string enterCommand, WorkSettings ws){
 
             enterCommand = enterCommand.Trim();
             foreach(KeyValuePair<string, Dictionary<string, string>> command in ws.Settings.Commands){
