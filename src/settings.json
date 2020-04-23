@@ -17,6 +17,10 @@
         "Exit": {
             "Description": "Выход из программы",
             "Command": "exit"
+        },
+        "EditNote":{
+            "Description": "Изменить запись",
+            "Command": "editnote"
         }
     }
 

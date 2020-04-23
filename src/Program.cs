@@ -44,6 +44,9 @@ namespace console_scheduler_prototype
                     case "ViewAll":
                         dataBase.ViewAllNotes();
                         break;
+                    case "EditNote":
+                        dataBase.EditNote();
+                        break;
                     case "Exit":
                         Console.WriteLine("Выход.");
                         workProgram = false;

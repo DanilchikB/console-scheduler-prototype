@@ -30,7 +30,24 @@ namespace Helpers.HelpWorkWithDB{
             };
             OpenAndCloseDB(sqlQuery, locationDB, query);
         }
-
+        //Проверить id
+        public bool CheckId(string id){
+            object verifiedId = null;
+            Query query = delegate(SQLiteCommand command, string sqlQuery){
+                command.CommandText = sqlQuery;
+                verifiedId = command.ExecuteScalar();
+            };
+            OpenAndCloseDB($"SELECT id FROM records WHERE id = {id};", locationDB, query);
+            
+            if(verifiedId != null){
+                return true;
+            }
+            return false;
+        }
+        //Измеение записи
+        public void EditNote(string changeNote, string id){
+            ExecuteQueryNoReturn($"UPDATE records SET record ='{changeNote}' WHERE id = {id}");
+        }
         //Показ всех записей
         public void ViewAllNotes(){
             Query query = delegate(SQLiteCommand command, string sqlQuery){

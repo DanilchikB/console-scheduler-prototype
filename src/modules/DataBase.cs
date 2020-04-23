@@ -41,5 +41,22 @@ namespace Modules.DataBase{
             Console.WriteLine("Все записи:");
             db.ViewAllNotes();
         }
+
+        //Редактирование записи
+        public void EditNote(){
+            Console.Write("Введите id записи, которую хотите отредактировать: ");
+            string enterId = Console.ReadLine();
+            if(enterId == ""){
+                Text.WriteYellowText("Вы ничего не ввели.");
+                return;
+            }
+            if(db.CheckId(enterId)){
+                Text.WriteGreenText("Есть такой Id");
+            }
+            Console.Write("Введите отредактированную запись");
+            string enterNote = Console.ReadLine();
+            db.EditNote(enterNote, enterId);
+
+        }
     }
 }
