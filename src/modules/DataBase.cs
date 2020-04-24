@@ -50,10 +50,11 @@ namespace Modules.DataBase{
                 Text.WriteYellowText("Вы ничего не ввели.");
                 return;
             }
-            if(db.CheckId(enterId)){
-                Text.WriteGreenText("Есть такой Id");
+            if(!db.CheckId(enterId)){
+                Text.WriteRedText("Нет такой записи.");
+                return;
             }
-            Console.Write("Введите отредактированную запись");
+            Console.Write("Введите отредактированную запись: ");
             string enterNote = Console.ReadLine();
             db.EditNote(enterNote, enterId);
 

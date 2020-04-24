@@ -7,7 +7,7 @@ using System.Data.SQLite;
 using Helpers.HelpText;
 
 namespace Helpers.HelpWorkWithDB{
-    class WorkWithDB{
+    public class WorkWithDB{
 
         public WorkWithDB(string locationDB){
             if(locationDB != ""){
