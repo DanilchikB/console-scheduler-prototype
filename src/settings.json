@@ -21,6 +21,10 @@
         "EditNote":{
             "Description": "Изменить запись",
             "Command": "editnote"
+        },
+        "DeleteNote":{
+            "Description": "Удалить запись",
+            "Command": "deletenote"
         }
     }
 

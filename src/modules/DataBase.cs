@@ -46,18 +46,33 @@ namespace Modules.DataBase{
         public void EditNote(){
             Console.Write("Введите id записи, которую хотите отредактировать: ");
             string enterId = Console.ReadLine();
-            if(enterId == ""){
-                Text.WriteYellowText("Вы ничего не ввели.");
-                return;
-            }
-            if(!db.CheckId(enterId)){
-                Text.WriteRedText("Нет такой записи.");
+            if(!CheckCorrectInput(enterId)){
                 return;
             }
             Console.Write("Введите отредактированную запись: ");
             string enterNote = Console.ReadLine();
             db.EditNote(enterNote, enterId);
 
+        }
+        public void DeleteNote(){
+            Console.Write("Введите id записи, которую хотите удалить: ");
+            string enterId = Console.ReadLine();
+            if(!CheckCorrectInput(enterId)){
+                return;
+            }
+            db.DeleteNote(enterId);
+        }
+
+        private bool CheckCorrectInput(string input){
+            if(input == ""){
+                Text.WriteYellowText("Вы ничего не ввели.");
+                return false;
+            }
+            if(!db.CheckId(input)){
+                Text.WriteRedText("Нет такой записи.");
+                return false;
+            }
+            return true;
         }
     }
 }

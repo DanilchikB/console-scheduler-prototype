@@ -47,6 +47,9 @@ namespace console_scheduler_prototype
                     case "EditNote":
                         dataBase.EditNote();
                         break;
+                    case "DeleteNote":
+                        dataBase.DeleteNote();
+                        break;
                     case "Exit":
                         Console.WriteLine("Выход.");
                         workProgram = false;

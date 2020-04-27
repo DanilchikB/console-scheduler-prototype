@@ -48,6 +48,9 @@ namespace Helpers.HelpWorkWithDB{
         public void EditNote(string changeNote, string id){
             ExecuteQueryNoReturn($"UPDATE records SET record ='{changeNote}' WHERE id = {id}");
         }
+        public void DeleteNote(string id){
+            ExecuteQueryNoReturn($"DELETE FROM records WHERE id = {id}");
+        }
         //Показ всех записей
         public void ViewAllNotes(){
             Query query = delegate(SQLiteCommand command, string sqlQuery){
