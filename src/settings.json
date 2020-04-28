@@ -25,6 +25,10 @@
         "DeleteNote":{
             "Description": "Удалить запись",
             "Command": "deletenote"
+        },
+        "TaskCompleted":{
+            "Description": "Перевести в статус \"Выполнено\"",
+            "Command": "taskcompleted"
         }
     }
 

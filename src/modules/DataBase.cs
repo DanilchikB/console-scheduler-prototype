@@ -16,7 +16,8 @@ namespace Modules.DataBase{
             string sqlQuery = @"CREATE TABLE IF NOT EXISTS records(
                 id INTEGER PRIMARY KEY,
                 record TEXT NOT NULL,
-                date TEXT NOT NULL
+                date TEXT NOT NULL,
+                status INTEGER NOT NULL DEFAULT 0
             );";
 
             db.ExecuteQueryNoReturn(sqlQuery);
@@ -63,6 +64,18 @@ namespace Modules.DataBase{
             db.DeleteNote(enterId);
         }
 
+        public void ChangeStatusOnDone(){
+            Console.Write("Введите id записи, которую хотите завершить: ");
+            string enterId = Console.ReadLine();
+            if(!CheckCorrectInput(enterId)){
+                return;
+            }
+            string sqlQuery = $@"UPDATE records 
+                SET status = 1
+                WHERE id = {enterId}";
+            db.ExecuteQueryNoReturn(sqlQuery);
+            Text.WriteYellowText("Статус изменен.");
+        }
         private bool CheckCorrectInput(string input){
             if(input == ""){
                 Text.WriteYellowText("Вы ничего не ввели.");

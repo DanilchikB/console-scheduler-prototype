@@ -50,6 +50,9 @@ namespace console_scheduler_prototype
                     case "DeleteNote":
                         dataBase.DeleteNote();
                         break;
+                    case "TaskCompleted":
+                        dataBase.ChangeStatusOnDone();
+                        break;
                     case "Exit":
                         Console.WriteLine("Выход.");
                         workProgram = false;

@@ -48,6 +48,7 @@ namespace Helpers.HelpWorkWithDB{
         public void EditNote(string changeNote, string id){
             ExecuteQueryNoReturn($"UPDATE records SET record ='{changeNote}' WHERE id = {id}");
         }
+        //удаление записи
         public void DeleteNote(string id){
             ExecuteQueryNoReturn($"DELETE FROM records WHERE id = {id}");
         }
