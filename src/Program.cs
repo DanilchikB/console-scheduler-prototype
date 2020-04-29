@@ -53,6 +53,9 @@ namespace console_scheduler_prototype
                     case "TaskCompleted":
                         dataBase.ChangeStatusOnDone();
                         break;
+                    case "TaskNoComleted":
+                        dataBase.ChangeStatusOnNoDone();
+                        break;
                     case "Exit":
                         Console.WriteLine("Выход.");
                         workProgram = false;

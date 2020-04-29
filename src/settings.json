@@ -29,6 +29,10 @@
         "TaskCompleted":{
             "Description": "Перевести в статус \"Выполнено\"",
             "Command": "taskcompleted"
+        },
+        "TaskNoComleted":{
+            "Description": "Перевести в статус \"Не выполнено\"",
+            "Command": "tasknocompleted"
         }
     }
 

@@ -66,12 +66,20 @@ namespace Modules.DataBase{
 
         public void ChangeStatusOnDone(){
             Console.Write("Введите id записи, которую хотите завершить: ");
+            ChangeStatus(1);
+        }
+
+        public void ChangeStatusOnNoDone(){
+            Console.Write("Введите id записи, которую хотите перевести в статус \"Не завершенно\": ");
+            ChangeStatus(0);
+        } 
+        private void ChangeStatus(int status = 0){
             string enterId = Console.ReadLine();
             if(!CheckCorrectInput(enterId)){
                 return;
             }
             string sqlQuery = $@"UPDATE records 
-                SET status = 1
+                SET status = {status}
                 WHERE id = {enterId}";
             db.ExecuteQueryNoReturn(sqlQuery);
             Text.WriteYellowText("Статус изменен.");
