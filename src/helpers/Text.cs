@@ -19,6 +19,18 @@ namespace Helpers.HelpText
         }
 
 
+        public static void WriteLineGreenText(string text){
+            WriteLineColorText(text, ConsoleColor.Green);
+        }
+
+        public static void WriteLineYellowText(string text){
+            WriteLineColorText(text, ConsoleColor.Yellow);
+        }
+
+        public static void WriteLineRedText(string text){
+            WriteLineColorText(text, ConsoleColor.Red);
+        }
+
         public static void WriteGreenText(string text){
             WriteColorText(text, ConsoleColor.Green);
         }
@@ -31,9 +43,15 @@ namespace Helpers.HelpText
             WriteColorText(text, ConsoleColor.Red);
         }
 
-        public static void WriteColorText(string text, ConsoleColor color){
+
+        public static void WriteLineColorText(string text, ConsoleColor color){
             Console.ForegroundColor = color;
             Console.WriteLine(text);
+            Console.ResetColor();
+        }
+        public static void WriteColorText(string text, ConsoleColor color){
+            Console.ForegroundColor = color;
+            Console.Write(text);
             Console.ResetColor();
         }
     }

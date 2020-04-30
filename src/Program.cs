@@ -30,7 +30,7 @@ namespace console_scheduler_prototype
                     command = commands.takeCommand(enteredCommand, settings);
 
                     if(command == null){
-                        Text.WriteRedText("Ошибка: Такой команды не существует!");
+                        Text.WriteLineRedText("Ошибка: Такой команды не существует!");
                         commands.ViewAllCommands(settings);
                     }else{
                         noCorrectCommandEntry = false;
@@ -55,6 +55,12 @@ namespace console_scheduler_prototype
                         break;
                     case "TaskNoComleted":
                         dataBase.ChangeStatusOnNoDone();
+                        break;
+                    case "ViewAllCompleted":
+                        dataBase.ViewAllCompleted();
+                        break;
+                    case "ViewAllNoCompleted":
+                        dataBase.ViewAllNoCompleted();
                         break;
                     case "Exit":
                         Console.WriteLine("Выход.");

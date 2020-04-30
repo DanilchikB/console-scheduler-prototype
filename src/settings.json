@@ -33,7 +33,16 @@
         "TaskNoComleted":{
             "Description": "Перевести в статус \"Не выполнено\"",
             "Command": "tasknocompleted"
+        },
+        "ViewAllCompleted":{
+            "Description": "Показать все выполненные задачи",
+            "Command": "viewallcompleted"
+        },
+        "ViewAllNoCompleted":{
+            "Description": "Показать все невыполненные задачи",
+            "Command": "viewallnocompleted"
         }
+
     }
 
 }

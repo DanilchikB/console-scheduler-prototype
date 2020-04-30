@@ -34,13 +34,13 @@ namespace Modules.DataBase{
 
             db.ExecuteQueryNoReturn(sqlQuery);
 
-            Text.WriteGreenText("Запись добавлена.");
+            Text.WriteLineGreenText("Запись добавлена.");
         }
 
         //Показ всех записей
         public void ViewAllNotes(){
             Console.WriteLine("Все записи:");
-            db.ViewAllNotes();
+            db.ViewAllNotes("SELECT * FROM records");
         }
 
         //Редактирование записи
@@ -73,6 +73,16 @@ namespace Modules.DataBase{
             Console.Write("Введите id записи, которую хотите перевести в статус \"Не завершенно\": ");
             ChangeStatus(0);
         } 
+
+        public void ViewAllCompleted(){
+            Console.WriteLine("Все выполненные задачи:");
+            db.ViewAllNotes("SELECT * FROM records WHERE status = 1");
+        }
+
+        public void ViewAllNoCompleted(){
+            Console.WriteLine("Не выполненные задачи:");
+            db.ViewAllNotes("SELECT * FROM records WHERE status = 0");
+        }
         private void ChangeStatus(int status = 0){
             string enterId = Console.ReadLine();
             if(!CheckCorrectInput(enterId)){
@@ -82,15 +92,15 @@ namespace Modules.DataBase{
                 SET status = {status}
                 WHERE id = {enterId}";
             db.ExecuteQueryNoReturn(sqlQuery);
-            Text.WriteYellowText("Статус изменен.");
+            Text.WriteLineYellowText("Статус изменен.");
         }
         private bool CheckCorrectInput(string input){
             if(input == ""){
-                Text.WriteYellowText("Вы ничего не ввели.");
+                Text.WriteLineYellowText("Вы ничего не ввели.");
                 return false;
             }
             if(!db.CheckId(input)){
-                Text.WriteRedText("Нет такой записи.");
+                Text.WriteLineRedText("Нет такой записи.");
                 return false;
             }
             return true;

@@ -53,7 +53,7 @@ namespace Helpers.HelpWorkWithDB{
             ExecuteQueryNoReturn($"DELETE FROM records WHERE id = {id}");
         }
         //Показ всех записей
-        public void ViewAllNotes(){
+        public void ViewAllNotes(string sqlQuery){
             Query query = delegate(SQLiteCommand command, string sqlQuery){
                 command.CommandText = sqlQuery;
                 using SQLiteDataReader read = command.ExecuteReader();
@@ -72,14 +72,20 @@ namespace Helpers.HelpWorkWithDB{
 
                     string id = Text.LimitAndIndentation(read["id"].ToString(), 7);
                     string record = Text.LimitAndIndentation(read["record"].ToString(),15);
-                    
-                    Console.WriteLine(id + "   " + record + "   " + read["date"]);
+                    ConsoleColor color;
+                    if(read["status"].ToString() == "1"){
+                        color = ConsoleColor.Green;
+                    }else{
+                        color = ConsoleColor.Red;
+                    }
+                    Text.WriteLineColorText(id + "   " + record + "   " + read["date"], color);
                 }
                 read.Close();
             };
-            OpenAndCloseDB("SELECT * FROM records;", locationDB, query);
+            OpenAndCloseDB(sqlQuery, locationDB, query);
             
         }
+
 
         //Метод для открытия и закрытия базы данных
         private void OpenAndCloseDB(string sqlQuery, string locationDB, Query query){
